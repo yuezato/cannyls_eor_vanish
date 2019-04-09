@@ -1,6 +1,6 @@
 # issue検証用リポジトリ
 
-## issue
+## issue https://github.com/frugalos/cannyls/issues/27
 
 現在の [Cannyls](https://github.com/frugalos/cannyls) （正確には [v0.9.3](<https://github.com/frugalos/cannyls/tree/87599402837317bb03efd842db2c07b97488edce>) 以前のCannyls) は、異常終了時に、[ジャーナル領域](<https://github.com/frugalos/cannyls/wiki/Journal-Region>)の末尾を表す特別なレコード [EndOfRecords ](<https://github.com/frugalos/cannyls/wiki/Storage-Format#3-2-1-end_of_records%E3%83%AC%E3%82%B3%E3%83%BC%E3%83%89>)の書き込みに失敗し、書き込みに失敗したlusfファイルはそれ以降 `StorageCorrupted` エラーとなり使うことができない。
 
