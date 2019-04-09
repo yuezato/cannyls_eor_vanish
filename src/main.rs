@@ -31,6 +31,8 @@ fn main() -> Result<(), Error> {
         ss.unreleased_head, ss.head, ss.tail
     );
 
+    let now = std::time::Instant::now();
+
     for i in 0..10000 {
         let len: usize = rng.gen_range(0, 1024);
         let lump_id = LumpId::new(rng.gen_range(0, i + 1));
@@ -38,9 +40,15 @@ fn main() -> Result<(), Error> {
         track!(storage.put(&lump_id, &embed_data))?;
     }
 
+    let elapsed = now.elapsed();
+    println!(
+        "elapsed {}.{}sec",
+        elapsed.as_secs(),
+        elapsed.subsec_millis()
+    );
+
     // simulate crash
     std::mem::forget(storage);
 
     Ok(())
 }
-
