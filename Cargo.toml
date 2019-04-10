@@ -5,7 +5,8 @@ authors = ["yuuya uezato <yuuya_uezato@dwango.co.jp>"]
 edition = "2018"
 
 [dependencies]
-cannyls = { git = "https://github.com/frugalos/cannyls" } # for 0.9.3
+# cannyls = { git = "https://github.com/frugalos/cannyls" } # for 0.9.3
+cannyls = { git = "https://github.com/yuezato/cannyls", branch = "patch_for_issue27" }
 tempdir = "0.3"
 trackable = "^0.2.21"
 rand = "0.6"
