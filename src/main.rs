@@ -42,8 +42,8 @@ fn main() -> Result<(), Error> {
 
     let ss = track!(storage.journal_snapshot())?;
     println!(
-        "unH = {}, H = {}, T = {}",
-        ss.unreleased_head, ss.head, ss.tail
+        "unH = {}, H = {}, T = {}, num of journal entries = {}",
+        ss.unreleased_head, ss.head, ss.tail, ss.entries.len()
     );
 
     let now = std::time::Instant::now();
