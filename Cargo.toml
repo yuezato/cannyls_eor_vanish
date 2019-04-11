@@ -10,3 +10,4 @@ cannyls = { git = "https://github.com/yuezato/cannyls", branch = "patch_for_issu
 tempdir = "0.3"
 trackable = "^0.2.21"
 rand = "0.6"
+structopt = "0.2"

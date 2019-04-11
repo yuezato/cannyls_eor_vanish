@@ -9,7 +9,7 @@ rm -f test.lusf
 
 for i in `seq 1 5000`; do
     echo $i
-    $prog
+    $prog --seed $i
     if ! ((i % 15)); then
 	rm -f test.lusf
     fi
