@@ -2,6 +2,7 @@ extern crate cannyls;
 extern crate rand;
 #[macro_use]
 extern crate trackable;
+extern crate structopt;
 
 use cannyls::block::BlockSize;
 use cannyls::lump::*;
@@ -11,8 +12,22 @@ use cannyls::Error;
 
 use rand::prelude::*;
 
+use structopt::StructOpt;
+#[derive(StructOpt, Debug)]
+#[structopt(name = "cannyls_eor_vanish")]
+struct Opt {
+    #[structopt(long = "seed")]
+    seed: Option<u64>,
+}
+
 fn main() -> Result<(), Error> {
-    let mut rng = rand::thread_rng();
+    let opt = Opt::from_args();
+
+    let mut rng = if let Some(seed) = opt.seed {
+        StdRng::seed_from_u64(seed)
+    } else {
+        StdRng::from_rng(rand::thread_rng()).unwrap()
+    };
 
     let (nvm, new) = track!(FileNvm::create_if_absent(
         "test.lusf",
