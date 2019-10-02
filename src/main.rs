@@ -35,9 +35,9 @@ fn main() -> Result<(), Error> {
     ))?;
 
     let mut storage = if !new {
-        track!(Storage::open(nvm))?
+        track!(StorageBuilder::new().journal_region_ratio(0.8).journal_safe_flush(true).journal_safe_enqueue(true).open(nvm))?
     } else {
-        track!(StorageBuilder::new().journal_region_ratio(0.8).create(nvm))?
+        track!(StorageBuilder::new().journal_region_ratio(0.8).journal_safe_flush(true).journal_safe_enqueue(true).create(nvm))?
     };
 
     let ss = track!(storage.journal_snapshot())?;
